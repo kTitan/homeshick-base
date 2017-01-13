@@ -1,0 +1,23 @@
+if hash pip 2> /dev/null; then
+	alias pip-upgrade-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+fi
+
+if hash docker-machine 2> /dev/null; then
+	alias docker-env="docker-machine env dev"
+fi
+
+if hash gls 2> /dev/null; then
+	alias ls="gls --color=auto"
+fi
+
+if hash hub 2> /dev/null; then
+	alias git="hub"
+fi
+
+if hash htop 2> /dev/null; then
+	alias top="htop"
+fi
+
+if hash colordiff 2> /dev/null; then
+	alias diff="colordiff -u"
+fi

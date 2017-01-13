@@ -1,0 +1,26 @@
+if hash brew 2> /dev/null; then
+	BREWPATH=$(brew --prefix)
+	if [[ -f ${BREWPATH}/etc/bash_completion ]]; then
+		source ${BREWPATH}/etc/bash_completion
+	fi
+	if [[ -d ${BREWPATH}/bin ]]; then
+		path_add_to_begin ${BREWPATH}/bin
+	fi
+	if [[ -d ${BREWPATH}/sbin ]]; then
+		path_add_to_begin ${BREWPATH}/sbin
+	fi
+	unset BREWPATH
+	
+	function cask-reinstall() {
+        	pkg=$1
+        	echo "Uninstalling $pkg"
+        	brew cask uninstall $pkg
+        	echo "Uninstalling $pkg (Force CleanUp)"
+        	brew cask uninstall $pkg --force
+        	echo "Installing $pkg in newest version"
+        	brew cask install $pkg
+	}
+	
+	alias cask-upgrade-all='for i in $(brew cask list); do if [[ $(brew cask info $i |grep "Not installed") ]]; then cask-reinstall $i; fi; done'
+	alias cask-upgrade-check='for i in $(brew cask list); do if [[ $(brew cask info $i |grep "Not installed") ]]; then echo cask-reinstall $i; fi; done'
+fi

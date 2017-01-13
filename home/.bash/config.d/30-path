@@ -1,0 +1,7 @@
+# general
+path_add_to_end $HOME/bin
+
+# RVM
+path_add_to_end $HOME/.rvm/bin
+
+

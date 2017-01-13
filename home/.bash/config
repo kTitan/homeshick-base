@@ -1,0 +1,8 @@
+# used for general config
+
+export EDITOR="vim"
+
+shopt -s cmdhist
+shopt -s checkwinsize
+shopt -s cdspell
+

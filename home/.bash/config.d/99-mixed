@@ -1,0 +1,15 @@
+# pyenv
+if hash pyenv 2> /dev/null; then
+	eval "$(pyenv init -)"
+fi
+if hash pyenv-virtualenv-init 2> /dev/null; then
+	eval "$(pyenv virtualenv-init -)"
+fi
+
+# travis
+if [[ -f ${HOME}/.travis/travis.sh ]]; then
+	source ${HOME}/.travis/travis.sh
+fi
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

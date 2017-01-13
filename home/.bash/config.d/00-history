@@ -1,0 +1,6 @@
+# setup bash history options
+shopt -s histappend
+export HISTTIMEFORMAT="%F %T "
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
