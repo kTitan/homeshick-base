@@ -1,6 +1,7 @@
 # used for general config
 
 export EDITOR="vim"
+export LANG="en_US.UTF-8"
 
 shopt -s cmdhist
 shopt -s checkwinsize
