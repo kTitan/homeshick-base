@@ -17,6 +17,11 @@ case "$OSTYPE" in
 	solaris*)	for i in ${HOME}/.bash/os.d/solaris/*  ; do source $i; done ;;
 esac
 
+# test for interactive shell
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
 
 # source custom bash completion files
 for i in ${HOME}/.bash/completions.d/*; do
