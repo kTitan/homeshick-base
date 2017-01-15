@@ -44,5 +44,10 @@ if [[ -d ${HOME}/.homesick/repos/homeshick/completions/homeshick-completion.bash
 	source ${HOME}/.homesick/repos/homeshick/completions/homeshick-completion.bash
 fi
 
+# call homeshick update
+if hash colordiff 2> /dev/null; then
+	homeshick --quiet refresh
+fi
+
 # cleanup
 unset i
