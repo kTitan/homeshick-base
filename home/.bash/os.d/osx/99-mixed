@@ -2,3 +2,8 @@
 if [[ -f ${HOME}/.iterm2_shell_integration.bash ]]; then
 	source ${HOME}/.iterm2_shell_integration.bash
 fi
+
+# atom
+if [[ -x /Applications/Atom.app/Contents/Resources/app/atom.sh ]]; then
+	alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
+fi

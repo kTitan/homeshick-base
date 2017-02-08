@@ -1,3 +1,4 @@
 # base config for operating systems of the type osx
 
 alias timemachine-speedup="sudo sysctl debug.lowpri_throttle_enabled=0"
+alias timemachine-watch-fs="sudo fs_usage -w | grep backupd"
