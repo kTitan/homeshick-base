@@ -7,3 +7,11 @@ fi
 if [[ -x /Applications/Atom.app/Contents/Resources/app/atom.sh ]]; then
 	alias atom="/Applications/Atom.app/Contents/Resources/app/atom.sh"
 fi
+
+# oc-cluster
+if [[ -x ${HOME}/bin/oc-cluster-wrapper/oc-cluster ]]; then
+	export PATH=${PATH}:${HOME}/bin/oc-cluster-wrapper
+	if [[ ! -f $(brew --prefix)/etc/bash_completion.d/oc-cluster.bash ]]; then
+		oc-cluster completion bash > $(brew --prefix)/etc/bash_completion.d/oc-cluster.bash
+	fi
+fi
