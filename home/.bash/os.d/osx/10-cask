@@ -23,6 +23,6 @@ if hash brew 2> /dev/null; then
         	brew cask install $pkg
 	}
 	
-	alias cask-upgrade-custom="brew cask upgrade $(brew cask outdated 2>/dev/null | egrep -v ^devonthink | awk '{print $1}')"
-	alias cask-upgrade-check="brew cask outdated"
+	alias cask-upgrade-custom='brew cask upgrade $(brew cask outdated 2>/dev/null | egrep -v ^devonthink | awk "{print $1}")'
+	alias cask-upgrade-check='brew cask outdated'
 fi
