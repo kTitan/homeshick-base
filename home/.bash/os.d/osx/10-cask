@@ -10,8 +10,10 @@ if hash brew 2> /dev/null; then
 		path_add_to_begin ${BREWPATH}/sbin
 	fi
 	unset BREWPATH
+
+	export HOMEBREW_NO_ANALYTICS=1
 	
-	function cask-reinstall() {
+	function cask-full-reinstall() {
         	pkg=$1
         	echo "Uninstalling $pkg"
         	brew cask uninstall $pkg
@@ -21,6 +23,6 @@ if hash brew 2> /dev/null; then
         	brew cask install $pkg
 	}
 	
-	alias cask-upgrade-all='for i in $(brew cask list); do if [[ $(brew cask info $i |grep "Not installed") ]]; then cask-reinstall $i; fi; done'
-	alias cask-upgrade-check='for i in $(brew cask list); do if [[ $(brew cask info $i |grep "Not installed") ]]; then echo cask-reinstall $i; fi; done'
+	alias cask-upgrade-custom="brew cask upgrade $(brew cask outdated 2>/dev/null | egrep -v ^devonthink | awk '{print $1}')"
+	alias cask-upgrade-check="brew cask outdated"
 fi
