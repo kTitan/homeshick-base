@@ -11,3 +11,17 @@ path_add_to_end() {
 	fi
 }
 
+#
+## ssh wrapper
+ss() {
+	if [[ -z $@ ]]; then return; else PARAMS=$@; fi
+	if hash asciinema 2> /dev/null; then
+		LOGDIR=$HOME/logs/ssh
+		LOGFILE=$(date '+%Y%m%d%H%M%S')_${PARAMS##* }.log
+		echo "* Recording to ${LOGDIR}/${LOGFILE}"
+		asciinema rec -c "ssh ${PARAMS}" -t "ssh ${PARAMS}" -i 1 ${LOGDIR}/${LOGFILE}
+	else
+		echo "* no logging possible, fallback to plain ssh session"
+		ssh $@
+	fi
+}
